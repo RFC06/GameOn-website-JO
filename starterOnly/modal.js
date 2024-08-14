@@ -62,10 +62,10 @@ function validate(event) {
   }
 
   // Email validation
-  const email = document.getElementById("email");
-  if (!email.value.includes('@')) {
-      email.classList.add("input-error");
-      document.getElementById("error-email").textContent = "Veuillez entrer un email valide.";
+  const email = document.getElementById("email").value;
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+      document.getElementById("error-email").textContent = "Veuillez entrer une adresse email valide.";
       isValid = false;
   }
 
@@ -79,52 +79,54 @@ function validate(event) {
 
   // Quantité validation
   const quantity = document.getElementById("quantity");
-  if (quantity.value < 0) {
+  if (!quantity.value || isNaN(quantity.value) || quantity.value < 0 || quantity.value > 99) {
       quantity.classList.add("input-error");
       document.getElementById("error-quantity").textContent = "Veuillez entrer une quantité valide.";
       isValid = false;
   }
 
   // Lieu validation
-  const location = document.getElementById("location");
-  if (!location.value) {
-      location.classList.add("input-error");
-      document.getElementById("error-location").textContent = "Veuillez sélectionner un lieu.";
+  const baliselocation = document.querySelectorAll('input[name="location"]');
+  let locationValue = "";
+
+  for (let i = 0; i < baliselocation.length; i++) {
+      if (baliselocation[i].checked) {
+          locationValue = baliselocation[i].value;
+          break;
+      }
+  }
+
+  if (!locationValue) {
+      document.getElementById("error-location").textContent = "Veuillez sélectionner un lieu";
       isValid = false;
   }
 
   // Conditions d'utilisation validation
-  const terms = document.getElementById("terms");
+  const terms = document.getElementById("checkbox1");
   if (!terms.checked) {
-      terms.classList.add("input-error");
-      document.getElementById("error-terms").textContent = "Vous devez accepter les conditions d'utilisation.";
+      document.getElementById("error-checkbox1").textContent = "Vous devez accepter les conditions d'utilisation.";
       isValid = false;
   }
 
   // Afficher le message de succès si le formulaire est valide
   if (isValid) {
-      const form = document.querySelector('.modal-body');
-      form.style.display = 'none';
-      const successMessage = document.getElementById('success-message');
-      successMessage.style.display = 'flex';
+      const form = document.querySelector('form[name="reserve"]');
+      form.style.display = 'none'; // Masquer le formulaire
+
+      const successDiv = document.getElementById('success-div');
+      successDiv.style.display = 'block'; // Afficher le message de succès
   }
 
   return isValid;
 }
 
 // Fermer le message de succès
-document.getElementById('close-success').addEventListener('click', function() {
-  const successMessage = document.getElementById('success-message');
-  successMessage.style.display = 'none';
-  const form = document.querySelector('.modal-body');
-  form.style.display = 'block';
-});
-
 document.getElementById('close-success-btn').addEventListener('click', function() {
-  const successMessage = document.getElementById('success-message');
-  successMessage.style.display = 'none';
-  const form = document.querySelector('.modal-body');
-  form.style.display = 'block';
+  const successDiv = document.getElementById('success-div');
+  successDiv.style.display = 'none'; // Masquer le message de succès
+
+  const form = document.querySelector('form[name="reserve"]');
+  form.style.display = 'block'; // Réafficher le formulaire après fermeture
 });
 
 // Attacher la fonction de validation au formulaire

@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   background-image: url("background.png");
   font-family: var(--font-default);
-  font-size: 18px;
+  font-size: 12px;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -200,6 +200,17 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+}
+
+
 .text-control.input-error {
   border: 2px solid red;
 }
@@ -208,52 +219,39 @@ input {
   color: red;
 }
 
-.success-message {
-  display: none;
+#success-div {
+  display: none; /* Caché par défaut */
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.success-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  position: relative;
-}
-
-.success-content .close,
-.success-content .btn-submit {
-  background: red;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
   color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
+
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
 }
 
-.success-content .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
+.success-message {
+  margin: 0;
 }
 
-.success-content .btn-submit {
+#close-success-btn {
   margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: red;
+  color:white;
+  border: none;
+  cursor: pointer;
 }
 
-
-
-
+#close-success-btn:hover {
+  background-color: #3876ac;
+}
 
 
 
@@ -452,7 +450,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 12px;
 }
 .hero-section {
   min-height: 93vh;
