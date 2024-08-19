@@ -97,7 +97,7 @@ function validate(event) {
   }
 
   if (!locationValue) {
-      document.getElementById("error-location").textContent = "Veuillez sélectionner un lieu";
+      document.getElementById("error-location").textContent = "Veuillez sélectionner un lieu.";
       isValid = false;
   }
 
@@ -124,6 +124,8 @@ function validate(event) {
 document.getElementById('close-success-btn').addEventListener('click', function() {
   const successDiv = document.getElementById('success-div');
   successDiv.style.display = 'none'; // Masquer le message de succès
+
+  closeModal();
 
   const form = document.querySelector('form[name="reserve"]');
   form.style.display = 'block'; // Réafficher le formulaire après fermeture

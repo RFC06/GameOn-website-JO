@@ -41,9 +41,9 @@
       </div>
       <div class="bground">
         <div class="content">
-            <span class="close" id="close-croix">&times;</span>
+            <span class="close" id="close-croix"></span>
             <div class="modal-body">
-                <form name="reserve" action="index.html" method="get" onsubmit="return validate(event);">
+                <form name="reserve" action="index.html" method="get" onsubmit="return validate(event);" novalidate>
                     <div class="formData">
                         <label for="first">Prénom</label><br>
                         <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
@@ -85,22 +85,20 @@
                       <span class="error" id="error-location"></span>
                     </div>
                     <div class="formData">
-                      <input class="checkbox-input" type="checkbox" id="checkbox1" required />
+                      <input class="checkbox-input" type="checkbox" id="checkbox1" name="terms" required />
                       <label class="checkbox2-label" for="checkbox1"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
                       <span class="error" id="error-checkbox1"></span>
-                      <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                      <input class="checkbox-input" type="checkbox" id="checkbox2" name="notification" />
                       <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label><br>
                     </div>
                     <input class="btn-submit" type="submit" class="button" value="C'est parti" />
                   </form>
+                  <div id="success-div">
+                    <p>Merci pour votre inscription.</p>
+                    <button id="close-success-btn" class="btn-submit">Fermer</button>
+                </div>
               </div>
           </div>
-      </div>
-  
-      <!-- Message de succès -->
-      <div id="success-div">
-          <p>Félicitations! Votre réservation a été effectuée avec succès.</p>
-          <button id="close-success-btn" class="btn-submit">Fermer</button>
       </div>
   </main>
 
