@@ -1,10 +1,6 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+  const navBar = document.getElementById("myTopnav");  // variable renommée
+  navBar.classList.toggle("responsive");  // Ajoute ou retire la classe "responsive"
 }
 
 // DOM Elements
@@ -130,6 +126,9 @@ document.getElementById('close-success-btn').addEventListener('click', function(
   const form = document.querySelector('form[name="reserve"]');
   form.style.display = 'block'; // Réafficher le formulaire après fermeture
 });
+console.log (successDiv)
+
+
 
 // Attacher la fonction de validation au formulaire
 document.querySelector('form[name="reserve"]').addEventListener('submit', validate);
